@@ -11,7 +11,7 @@ pipeline {
       
         stage('Build') {
             steps {
-                sh 'FROM openjdk WORKDIR /app COPY . /app RUN javac sample.java CMD ["java","sample"]'
+                sh 'RUN javac sample.java CMD ["java","sample"]'
                 echo 'Build App'
             }
         }
