@@ -10,7 +10,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    bat 'docker build -t newdocker .'
+                    bat 'docker build -t jenkinsjavaapp .'
                 }
             }
         }
