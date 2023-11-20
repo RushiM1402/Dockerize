@@ -1,30 +1,18 @@
 pipeline {
     agent any
-     
-    stages {
 
-       stage('Checkout') {
+    stages {
+        stage('Build app') {
             steps {
-                git branch: 'main', url: 'https://github.com/Tejas-Pulli/Dockerize.git'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Tejas-Pulli/Dockerize.git']])
             }
         }
-      
-        stage('Build') {
-            steps {
-                sh 'mvn clean install'
-                echo 'Build App'
-            }
-        }
-      
-       stage('Dockerize') {
-            steps {
-                script {
-                    docker.build('myhellojava')
-                    docker.withRegistry('https://hub.docker.com', 'dockerid') {
-                        docker.image('myhellojava').push()
-                    }
+        stage('Build docker image'){
+            steps{
+                script{
+                    bat 'docker build -t jenkinsjavaapp .'
                 }
             }
+        }
     }
-}
 }
