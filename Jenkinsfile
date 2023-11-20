@@ -5,33 +5,30 @@ pipeline {
 
        stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                git branch: 'main', url: 'https://github.com/Tejas-Pulli/Dockerize.git'
             }
         }
       
         stage('Build') {
             steps {
+                sh 'FROM openjdk
+                    WORKDIR /app
+                    COPY . /app
+                    RUN javac sample.java
+                    CMD ["java","sample"]'
                 echo 'Build App'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Test App'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploy App'
-            }
-        }
+      
        stage('Dockerize') {
             steps {
                 script {
-                    docker.build('your-image-name')
-                    docker.withRegistry('https://your-registry-url', 'your-registry-credentials') {
-                        docker.image('your-image-name').push()
+                    docker.build('myhellojava')
+                    docker.withRegistry('https://hub.docker.com', 'dockerid') {
+                        docker.image('myhellojava').push()
                     }
                 }
             }
     }
+}
 }
