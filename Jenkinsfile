@@ -11,7 +11,7 @@ pipeline {
       
         stage('Build') {
             steps {
-                sh 'RUN javac sample.java CMD ["java","sample"]'
+                sh 'mvn clean install'
                 echo 'Build App'
             }
         }
