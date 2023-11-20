@@ -1,5 +1,5 @@
 public class Hello{
-  public satic void main(String[] args){
+  public static void main(String[] args){
   System.out.println("Hello This is Docerized");
 }
 }
