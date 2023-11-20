@@ -10,9 +10,11 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    bat 'docker build -t jenkinsjavaapp .'
+                    bat 'docker build -t hellojavaapp .'
                 }
             }
         }
+        
     }
 }
+
