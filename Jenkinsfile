@@ -25,7 +25,7 @@ pipeline {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerpwd')]) {
-                        bat 'docker login -u pullitejas3@gmail.com -p ${dockerpwd}'
+                        bat 'docker login -u pullitejas3@gmail.com -p Tj@152002'
 
                     }
                     bat 'docker push tejas1502/jenkinsjava_app:v1.0'
